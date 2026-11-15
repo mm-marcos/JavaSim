@@ -7,11 +7,13 @@ public class ModelDriver {
 
         for (int turn = 1; turn <= 20; turn++) {
             world.takeTurn();
+            
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 System.out.println("Thread disrupted.");
             }
+            
             System.out.println("Turn " + turn);
             System.out.println(world.getGridText());
         }
