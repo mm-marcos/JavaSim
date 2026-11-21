@@ -76,7 +76,45 @@ public class World {
             }
         }
     }
+    
+    public Location findNearestCreature(Location start) {
+        if (start == null) {
+            return null;
+        }
 
+        Location nearestCreature = null;
+        int shortestDistance = 2147483647;
+
+        for (int row = 0; row < grid.length; row++) {
+            for (int column = 0; column < grid[row].length; column++) {
+                Entity entity = grid[row][column];
+
+                if (entity != null && entity.isAlive()) {
+                    if (entity instanceof Creature) {
+                        int rowDistance = row - start.getRow();
+                        int columnDistance = column - start.getColumn();
+
+                        if (rowDistance < 0) {
+                            rowDistance = -rowDistance;
+                        }
+
+                        if (columnDistance < 0) {
+                            columnDistance = -columnDistance;
+                        }
+
+                        int distance = rowDistance + columnDistance;
+
+                        if (distance < shortestDistance) {
+                            shortestDistance = distance;
+                            nearestCreature = new Location(row, column);
+                        }
+                    }
+                }
+            }
+        }
+        return nearestCreature;
+    }
+    
     // This method finds the food with the shortest up-down-left-right distance.
     public Location findNearestFood(Location start) {
         if (start == null) {
