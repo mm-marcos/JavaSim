@@ -156,8 +156,8 @@ public class World {
     }
 
     // This method moves a creature one cell and returns true if it eats food.
-    public boolean moveCreature(Creature creature, Location nextLocation) {
-        if (creature == null || nextLocation == null) {
+    public boolean moveEntity(Entity entity, Location nextLocation) {
+        if (entity == null || nextLocation == null) {
             return false;
         }
 
@@ -184,11 +184,11 @@ public class World {
             }
         }
 
-        Location oldLocation = creature.getLocation();
+        Location oldLocation = entity.getLocation();
         grid[oldLocation.getRow()][oldLocation.getColumn()] = null;
 
-        creature.setLocation(nextLocation);
-        grid[nextRow][nextColumn] = creature;
+        entity.setLocation(nextLocation);
+        grid[nextRow][nextColumn] = entity;
 
         return ateFood;
     }

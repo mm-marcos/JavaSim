@@ -40,7 +40,7 @@ public class Creature extends Entity {
             }
 
             Location nextLocation = new Location(nextRow, nextColumn);
-            ateFood = world.moveCreature(this, nextLocation);
+            ateFood = world.moveEntity(this, nextLocation);
         }
 
         if (ateFood) {
