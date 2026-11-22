@@ -17,6 +17,14 @@ public class World {
             }
             addEntity(new Creature(location));
         }
+        
+        for (int i = 0; i < Settings.STARTING_PREDATORS; i++) {
+            Location location = RandomFactory.randomEmptyLocation(grid);
+            if (location == null) {
+                break;
+            }
+            addEntity(new Predator(location));
+        }
 
         for (int i = 0; i < Settings.STARTING_FOOD; i++) {
             Location location = RandomFactory.randomEmptyLocation(grid);
