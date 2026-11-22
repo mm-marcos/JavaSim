@@ -89,6 +89,8 @@ public class SimulationApp {
                         graphics.setColor(Color.WHITE);
                     } else if (entity.getSymbol() == 'F') {
                         graphics.setColor(new Color(80, 180, 90));
+                    } else if (entity.getSymbol() == 'P') {
+                        graphics.setColor(new Color(255, 99, 71));
                     } else {
                         graphics.setColor(new Color(70, 120, 220));
                     }
