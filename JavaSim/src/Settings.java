@@ -13,6 +13,9 @@ public class Settings {
     // Number of food items placed in the world when it starts.
     public static int STARTING_FOOD = 18;
 
+    // Number of predators placed in the world when it starts.
+    public static int STARTING_PREDATORS = 2;
+    
     // Number of turns a creature can go without eating before it starves.
     public static int STARVATION_TURNS = 8;
 

@@ -30,6 +30,7 @@ public class Predator extends Entity {
             }
 
             Location nextLocation = new Location(nextRow, nextColumn);
+            world.moveEntity(this, nextLocation);
         }
 
     }
