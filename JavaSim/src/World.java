@@ -155,7 +155,7 @@ public class World {
         return nearestFood;
     }
 
-    // This method moves a creature one cell and returns true if it eats food.
+    // This method moves an entity one cell and returns true if it eats food.
     public boolean moveEntity(Entity entity, Location nextLocation) {
         if (entity == null || nextLocation == null) {
             return false;
@@ -173,12 +173,15 @@ public class World {
         }
 
         Entity occupant = grid[nextRow][nextColumn];
-        boolean ateFood = false;
+        boolean ateSomething = false;
 
         if (occupant != null) {
             if (occupant instanceof Food) {
                 removeEntity(occupant);
-                ateFood = true;
+                ateSomething = true;
+            } else if (entity instanceof Predator && occupant instanceof Creature){
+            	removeEntity(occupant);
+            	ateSomething = true;
             } else {
                 return false;
             }
@@ -190,7 +193,7 @@ public class World {
         entity.setLocation(nextLocation);
         grid[nextRow][nextColumn] = entity;
 
-        return ateFood;
+        return ateSomething;
     }
 
     // This method runs one turn for each entity, then gives empty cells a chance to grow food.
